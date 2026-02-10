@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>What's your job personality?</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="app">
+
+  <div id="startScreen" class="screen active">
+    <h1>What's your job personality?</h1>
+    <button class="bigButton" onclick="startQuiz()">Start</button>
+  </div>
+
+  <div id="quizScreen" class="screen">
+    <div id="progress"></div>
+    <h2 id="questionText"></h2>
+    <div id="answers"></div>
+  </div>
+
+<div id="loadingScreen" class="screen">
+  <h2>Calculating your result...</h2>
+  <div class="spinner"></div>
+</div>
+
+  <div id="resultScreen" class="screen">
+    <div class="resultCard">
+      <h2 id="resultTitle"></h2>
+      <img id="resultGif" src="" alt="Result GIF">
+    </div>
+    <button class="restartButton" onclick="restartQuiz()">Start again</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
