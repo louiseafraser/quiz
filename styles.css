@@ -91,20 +91,20 @@ h1, h2 {
   100% { transform: rotate(360deg); }
 }
 
-/* Make the result container a flex column */
+/* Make the result screen a vertical flex container */
 #resultScreen {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* content starts at top */
-  min-height: 100vh; /* full height of the screen */
+  justify-content: flex-start;  /* content starts at the top */
+  min-height: 100vh;           /* full height of screen */
   padding: 20px;
   box-sizing: border-box;
 }
 
 /* Push the button to the bottom */
-#resultScreen button {
-  margin-top: auto; /* pushes the button to the bottom */
+#resultScreen .restartButton {
+  margin-top: auto;            /* pushes the button to the bottom */
   padding: 15px 30px;
   font-size: 18px;
   background-color: #358ca0;
@@ -114,6 +114,13 @@ h1, h2 {
   cursor: pointer;
 }
 
-#resultScreen button:hover {
+#resultScreen .restartButton:hover {
   background-color: #2a7080;
 }
+
+/* Optional: center the content card */
+.resultCard {
+  text-align: center;
+}
+
+
