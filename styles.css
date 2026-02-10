@@ -90,3 +90,30 @@ h1, h2 {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Make the result container a flex column */
+#resultScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* content starts at top */
+  min-height: 100vh; /* full height of the screen */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Push the button to the bottom */
+#resultScreen button {
+  margin-top: auto; /* pushes the button to the bottom */
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #358ca0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#resultScreen button:hover {
+  background-color: #2a7080;
+}
