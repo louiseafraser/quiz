@@ -33,7 +33,7 @@ h1, h2 {
 }
 
 /* ===== Start Page ===== */
-#startScreen img.logo {
+#startScreen .footerLogo {
   max-width: 180px;
   margin: 20px auto 10px auto;
 }
@@ -98,7 +98,7 @@ h1, h2 {
   border-radius: 6px;
 }
 
-/* ===== Question Card Styling (Optional Enhancement) ===== */
+/* ===== Question Card Styling ===== */
 .screen .contentContainer .questionCard {
   background: white;
   padding: 20px;
@@ -135,8 +135,8 @@ h1, h2 {
 }
 
 .resultCard img {
-  width: 300px; /* bigger GIF for tablet */
   max-width: 90%;
+  width: 300px;
   margin-top: 15px;
   display: block;
 }
