@@ -23,21 +23,26 @@
 <div id="questionScreen" class="screen">
   <div class="contentContainer">
 
-    <!-- Question text -->
-    <h2 id="questionText"></h2>
+    <!-- Question Card -->
+    <div class="questionCard">
+      <h2 id="questionText"></h2>
 
-    <!-- Answer buttons will be dynamically inserted here -->
-    <div id="answers"></div>
+      <!-- Progress tracker -->
+      <div id="progressContainer">
+        <div id="progressBar"></div>
+      </div>
+      <div id="progress"></div>
 
-    <!-- Question tracker -->
-    <div id="progress" style="margin-top:15px; font-size:16px; color:#666;"></div>
-
-    <!-- Optional progress bar -->
-    <div id="progressContainer" style="width:90%; height:12px; background:#ddd; border-radius:6px; margin:15px auto; overflow:hidden;">
-      <div id="progressBar" style="width:0%; height:100%; background:#358ca0; border-radius:6px; transition:width 0.5s ease;"></div>
+      <!-- Answer buttons -->
+      <div id="answers"></div>
     </div>
 
   </div>
+
+  <!-- Logo at bottom -->
+  <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
+</div>
+
 
   <!-- Logo at bottom -->
   <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
@@ -80,6 +85,7 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
