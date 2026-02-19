@@ -20,14 +20,29 @@
 </div>
 
 
- <div id="questionScreen" class="screen">
+<div id="questionScreen" class="screen">
   <div class="contentContainer">
-    <!-- Question text and answer buttons go here -->
+
+    <!-- Question text -->
+    <h2 id="questionText"></h2>
+
+    <!-- Answer buttons will be dynamically inserted here -->
+    <div id="answers"></div>
+
+    <!-- Question tracker -->
+    <div id="progress" style="margin-top:15px; font-size:16px; color:#666;"></div>
+
+    <!-- Optional progress bar -->
+    <div id="progressContainer" style="width:90%; height:12px; background:#ddd; border-radius:6px; margin:15px auto; overflow:hidden;">
+      <div id="progressBar" style="width:0%; height:100%; background:#358ca0; border-radius:6px; transition:width 0.5s ease;"></div>
+    </div>
+
   </div>
 
   <!-- Logo at bottom -->
   <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
 </div>
+
 
 <div id="loadingScreen" class="screen">
   <h2>Calculating your result...</h2>
@@ -53,4 +68,5 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
