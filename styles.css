@@ -1,34 +1,64 @@
+/* ===== Global Styles ===== */
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background: #f5f7f8;
   margin: 0;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+/* ===== Screen Containers ===== */
 .screen {
   display: none;
-  padding: 40px 20px;
+  padding: 20px;
   min-height: 100vh;
+  box-sizing: border-box;
   opacity: 0;
   transition: opacity 0.4s ease;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .screen.active {
-  display: block;
+  display: flex;
   opacity: 1;
 }
 
+/* ===== Headers ===== */
 h1, h2 {
   color: #358ca0;
+  margin: 10px 0;
 }
 
-.bigButton {
+/* ===== Start Page ===== */
+#startScreen img.logo {
+  max-width: 180px;
+  margin: 20px auto 10px auto;
+}
+
+#startScreen p.description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* ===== Buttons ===== */
+.bigButton, .restartButton {
   font-size: 28px;
   padding: 20px 40px;
   background: #358ca0;
   color: white;
   border: none;
   border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.bigButton:hover, .restartButton:hover {
+  background-color: #2a7080;
+  transform: scale(1.05);
 }
 
 .answerButton {
@@ -41,16 +71,42 @@ h1, h2 {
   border: none;
   background: white;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 .answerButton:hover {
   background: #e8f3f6;
+  transform: scale(1.02);
 }
 
-#progress {
-  margin-bottom: 20px;
-  font-size: 18px;
-  color: #666;
+/* ===== Progress ===== */
+#progressContainer {
+  width: 90%;
+  height: 12px;
+  background: #ddd;
+  border-radius: 6px;
+  margin: 10px auto 20px auto;
+  overflow: hidden;
+}
+
+#progressBar {
+  width: 0%;
+  height: 100%;
+  background: #358ca0;
+  transition: width 0.5s ease;
+  border-radius: 6px;
+}
+
+/* ===== Result Screen ===== */
+#resultScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .resultCard {
@@ -58,24 +114,34 @@ h1, h2 {
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 90%;
+  margin-bottom: 20px;
 }
 
 .resultCard img {
-  width: 220px;
+  width: 300px; /* bigger GIF */
   margin-top: 15px;
 }
 
-.restartButton {
-  margin-top: 40px;
+/* Instruction text under GIF */
+.resultCard p.instruction {
   font-size: 16px;
-  padding: 10px 20px;
-  background: #358ca0;
-  color: white;
-  border: none;
-  border-radius: 8px;
+  color: #666;
+  margin-top: 15px;
 }
 
+/* Push restart button to bottom */
+#resultScreen .restartButton {
+  margin-top: auto;
+  padding: 15px 30px;
+  font-size: 18px;
+}
+
+/* ===== Spinner ===== */
 .spinner {
   margin: 40px auto;
   width: 60px;
@@ -91,36 +157,24 @@ h1, h2 {
   100% { transform: rotate(360deg); }
 }
 
-/* Make the result screen a vertical flex container */
-#resultScreen {
+/* ===== Logo at bottom of every page ===== */
+.footerLogo {
+  max-width: 120px;
+  margin: 20px auto 10px auto;
+}
+
+/* ===== Make quiz content fill screen nicely ===== */
+.screen .contentContainer {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-start;  /* content starts at the top */
-  min-height: 100vh;           /* full height of screen */
-  padding: 20px;
-  box-sizing: border-box;
+  width: 100%;
 }
 
-/* Push the button to the bottom */
-#resultScreen .restartButton {
-  margin-top: auto;            /* pushes the button to the bottom */
-  padding: 15px 30px;
-  font-size: 18px;
-  background-color: #358ca0;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+/* ===== Optional enhancements ===== */
+.screen .contentContainer .cardShadow {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  border-radius: 16px;
 }
-
-#resultScreen .restartButton:hover {
-  background-color: #2a7080;
-}
-
-/* Optional: center the content card */
-.resultCard {
-  text-align: center;
-}
-
-
