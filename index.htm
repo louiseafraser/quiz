@@ -47,7 +47,16 @@
 <div id="loadingScreen" class="screen">
   <h2>Calculating your result...</h2>
   <div class="spinner"></div>
+
+  <!-- Optional small progress bar to match style -->
+  <div id="loadingProgressContainer" style="width:90%; height:12px; background:#ddd; border-radius:6px; margin:20px auto; overflow:hidden;">
+    <div id="loadingProgressBar" style="width:100%; height:100%; background:#358ca0; border-radius:6px; animation: loadingProgress 2s linear;"></div>
+  </div>
+
+  <!-- Logo at bottom -->
+  <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
 </div>
+
 
 <div id="resultScreen" class="screen">
   <div class="resultCard">
@@ -68,5 +77,6 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
