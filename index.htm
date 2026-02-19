@@ -10,83 +10,70 @@
 
 <div id="app">
 
-<div id="startScreen" class="screen active">
-  <h1>What's your job personality?</h1>
-  <p class="description">Take this quiz to discover your ideal job personality!</p>
-  <button class="bigButton" onclick="startQuiz()">Start</button>
+  <!-- Start Screen -->
+  <div id="startScreen" class="screen active">
+    <h1>What's your job personality?</h1>
+    <p class="description">Take this quiz to discover your ideal job personality!</p>
+    <button class="bigButton" onclick="startQuiz()">Start</button>
 
-  <!-- Logo at bottom -->
-  <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
-</div>
+    <!-- Logo at bottom -->
+    <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
+  </div>
 
+  <!-- Question Screen -->
+  <div id="questionScreen" class="screen">
+    <div class="contentContainer">
 
-<div id="questionScreen" class="screen">
-  <div class="contentContainer">
+      <!-- Question Card -->
+      <div class="questionCard">
+        <h2 id="questionText"></h2>
 
-    <!-- Question Card -->
-    <div class="questionCard">
-      <h2 id="questionText"></h2>
+        <!-- Progress tracker -->
+        <div id="progressContainer">
+          <div id="progressBar"></div>
+        </div>
+        <div id="progress"></div>
 
-      <!-- Progress tracker -->
-      <div id="progressContainer">
-        <div id="progressBar"></div>
+        <!-- Answer buttons -->
+        <div id="answers"></div>
       </div>
-      <div id="progress"></div>
 
-      <!-- Answer buttons -->
-      <div id="answers"></div>
     </div>
 
+    <!-- Logo at bottom -->
+    <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
   </div>
 
-  <!-- Logo at bottom -->
-  <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
-</div>
+  <!-- Loading Screen -->
+  <div id="loadingScreen" class="screen">
+    <h2>Calculating your result...</h2>
+    <div class="spinner"></div>
 
-
-  <!-- Logo at bottom -->
-  <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
-</div>
-
-
-<div id="loadingScreen" class="screen">
-  <h2>Calculating your result...</h2>
-  <div class="spinner"></div>
-
-  <!-- Optional small progress bar to match style -->
-  <div id="loadingProgressContainer" style="width:90%; height:12px; background:#ddd; border-radius:6px; margin:20px auto; overflow:hidden;">
-    <div id="loadingProgressBar" style="width:100%; height:100%; background:#358ca0; border-radius:6px; animation: loadingProgress 2s linear;"></div>
+    <!-- Logo at bottom -->
+    <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
   </div>
 
-  <!-- Logo at bottom -->
-  <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
-</div>
+  <!-- Result Screen -->
+  <div id="resultScreen" class="screen">
+    <div class="resultCard">
+      <h2>Your job personality is:</h2>
+      <img id="resultGif" src="" alt="Result GIF">
+      <p class="instruction">
+        Please pick up your information card for your personality type and then you can make your own mini figurine
+      </p>
+    </div>
 
+    <!-- Restart button at bottom -->
+    <button class="restartButton" onclick="restartQuiz()">Start again</button>
 
-<div id="resultScreen" class="screen">
-  <div class="resultCard">
-    <h2>Your job personality is:</h2>
-    <img id="resultGif" src="" alt="Result GIF">
-    <p class="instruction">
-      Please pick up your information card for your personality type and then you can make your own mini figurine
-    </p>
+    <!-- Logo at bottom -->
+    <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
   </div>
-
-  <!-- Restart button at bottom -->
-  <button class="restartButton" onclick="restartQuiz()">Start again</button>
-
-  <!-- Logo at bottom -->
-  <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
-</div>
-
 
 </div>
 
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
 
 
