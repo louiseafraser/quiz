@@ -98,6 +98,18 @@ h1, h2 {
   border-radius: 6px;
 }
 
+/* ===== Question Card Styling (Optional Enhancement) ===== */
+.screen .contentContainer .questionCard {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  max-width: 90%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* ===== Result Screen ===== */
 #resultScreen {
   display: flex;
@@ -123,31 +135,41 @@ h1, h2 {
 }
 
 .resultCard img {
-  width: 300px; /* bigger GIF */
+  width: 300px; /* bigger GIF for tablet */
+  max-width: 90%;
   margin-top: 15px;
+  display: block;
 }
 
-/* Instruction text under GIF */
 .resultCard p.instruction {
   font-size: 16px;
   color: #666;
   margin-top: 15px;
 }
 
-/* Push restart button to bottom */
+/* Maintain the restart button at bottom */
 #resultScreen .restartButton {
   margin-top: auto;
   padding: 15px 30px;
   font-size: 18px;
+  background-color: #358ca0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#resultScreen .restartButton:hover {
+  background-color: #2a7080;
 }
 
 /* ===== Spinner ===== */
 .spinner {
   margin: 40px auto;
-  width: 60px;
-  height: 60px;
-  border: 6px solid #e0e0e0;
-  border-top: 6px solid #358ca0;
+  width: 80px;
+  height: 80px;
+  border: 8px solid #e0e0e0;
+  border-top: 8px solid #358ca0;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
