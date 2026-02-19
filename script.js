@@ -148,27 +148,40 @@ function shuffleArray(array) {
 function showQuestion() {
   const q = questions[currentQuestion];
 
+  // Update question text
   document.getElementById("questionText").textContent = q.text;
+
+  // Update question tracker
   document.getElementById("progress").textContent =
     `Question ${currentQuestion + 1} of ${questions.length}`;
 
+  // Update progress bar
+  const progressPercent = ((currentQuestion + 1) / questions.length) * 100;
+  document.getElementById("progressBar").style.width = progressPercent + "%";
+
+  // Get the answers container
   const answersDiv = document.getElementById("answers");
   answersDiv.innerHTML = "";
 
+  // Shuffle answers so order changes each time
   shuffleArray([...q.answers]).forEach(answer => {
     const btn = document.createElement("button");
     btn.className = "answerButton";
     btn.textContent = answer.text;
 
     btn.onclick = () => {
+      // Update scores
       scores[answer.main] += 2;
       if (answer.secondary) scores[answer.secondary] += 1;
+
+      // Move to next question
       nextQuestion();
     };
 
     answersDiv.appendChild(btn);
   });
 }
+
 
 function nextQuestion() {
   currentQuestion++;
@@ -198,3 +211,4 @@ function showResult() {
 function restartQuiz() {
   showScreen("startScreen");
 }
+
