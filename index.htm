@@ -10,32 +10,47 @@
 
 <div id="app">
 
-  <div id="startScreen" class="screen active">
-    <h1>What's your job personality?</h1>
-    <button class="bigButton" onclick="startQuiz()">Start</button>
+<div id="startScreen" class="screen active">
+  <h1>What's your job personality?</h1>
+  <p class="description">Take this quiz to discover your ideal job personality!</p>
+  <button class="bigButton" onclick="startQuiz()">Start</button>
+
+  <!-- Logo at bottom -->
+  <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
+</div>
+
+
+ <div id="questionScreen" class="screen">
+  <div class="contentContainer">
+    <!-- Question text and answer buttons go here -->
   </div>
 
-  <div id="quizScreen" class="screen">
-    <div id="progress"></div>
-    <h2 id="questionText"></h2>
-    <div id="answers"></div>
-  </div>
+  <!-- Logo at bottom -->
+  <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
+</div>
 
 <div id="loadingScreen" class="screen">
   <h2>Calculating your result...</h2>
   <div class="spinner"></div>
 </div>
 
-  <div id="resultScreen" class="screen">
-    <div class="resultCard">
-      <h2 id="resultTitle"></h2>
-      <img id="resultGif" src="" alt="Result GIF">
-    </div>
-    <button class="restartButton" onclick="restartQuiz()">Start again</button>
+<div id="resultScreen" class="screen">
+  <div class="resultCard">
+    <h2>Your job personality is:</h2>
+    <img id="resultGif" src="" alt="Result GIF">
+    <p class="instruction">Please pick up your information card for your personality type and then you can make your own mini figurine</p>
   </div>
+
+  <!-- Restart button -->
+  <button class="restartButton" onclick="restartQuiz()">Start again</button>
+
+  <!-- Logo at bottom -->
+  <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
+</div>
 
 </div>
 
 <script src="script.js"></script>
 </body>
 </html>
+
