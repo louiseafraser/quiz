@@ -64,8 +64,8 @@ h1, h2 {
 
 .answerButton {
   display: block;
-  width: 90%;
-  margin: 12px auto;
+  width: 100%;              /* ✅ full width */
+  margin: 10px 0;           /* space between buttons */
   padding: 18px;
   font-size: 20px;
   border-radius: 10px;
@@ -74,6 +74,12 @@ h1, h2 {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   cursor: pointer;
   transition: background-color 0.2s, transform 0.2s;
+  box-sizing: border-box;   /* prevents overflow */
+}
+
+/* Make answer container full width inside card */
+#answers {
+  width: 100%;
 }
 
 .answerButton:hover {
@@ -198,6 +204,7 @@ h1, h2 {
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
   border-radius: 16px;
 }
+
 
 
 
