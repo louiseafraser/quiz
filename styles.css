@@ -18,7 +18,8 @@ body {
   opacity: 0;
   transition: opacity 0.4s ease;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;   /* ✅ center vertically */
+  align-items: center;       /* ✅ center horizontally */
 }
 
 .screen.active {
@@ -200,3 +201,4 @@ h1, h2 {
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
   border-radius: 16px;
 }
+
