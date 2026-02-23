@@ -15,65 +15,58 @@
     <h1>What's your job personality?</h1>
     <p class="description">Take this quiz to discover your ideal job personality!</p>
     <button class="bigButton" onclick="startQuiz()">Start</button>
-    <!-- Logo at bottom -->
     <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
   </div>
 
   <!-- Question Screen -->
   <div id="questionScreen" class="screen">
     <div class="contentContainer">
+      <div class="questionCard">
 
-<div class="questionCard">
+        <div id="progressContainer">
+          <div id="progressBar"></div>
+        </div>
 
-  <!-- Progress bar -->
-  <div id="progressContainer">
-    <div id="progressBar"></div>
-  </div>
+        <div id="progress"></div>
 
-  <!-- Question tracker -->
-  <div id="progress"></div>
+        <h2 id="questionText"></h2>
 
-  <!-- Question text -->
-  <h2 id="questionText"></h2>
+        <div id="answers"></div>
 
-  <!-- Answer buttons -->
-  <div id="answers"></div>
+      </div>
+    </div>
 
-</div>
-
-    <!-- Logo at bottom -->
     <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
-  </div>
+  </div> <!-- ✅ THIS WAS MISSING -->
 
   <!-- Loading Screen -->
   <div id="loadingScreen" class="screen">
     <h2>Calculating your result...</h2>
     <div class="spinner"></div>
-    <!-- Logo at bottom -->
     <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
   </div>
 
-<!-- Result Screen -->
-<div id="resultScreen" class="screen">
-  <div class="resultCard">
-    <h2 id="resultTitle">Your job personality is:</h2>
-    <img id="resultGif" src="" alt="Result GIF">
-    <p class="instruction">
-      Please pick up your information card for your personality type and then you can make your own mini figurine
-    </p>
+  <!-- Result Screen -->
+  <div id="resultScreen" class="screen">
+    <div class="resultCard">
+      <h2 id="resultTitle"></h2>
+      <img id="resultGif" src="" alt="Result GIF">
+      <p class="instruction">
+        Please collect your personality information card.  
+        Once you have it, you can move on to build your mini figurine.
+      </p>
+    </div>
+
+    <button class="restartButton" onclick="restartQuiz()">Start again</button>
+
+    <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
   </div>
-
-  <!-- Restart button at bottom -->
-  <button class="restartButton" onclick="restartQuiz()">Start again</button>
-
-  <!-- Logo at bottom -->
-  <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland Logo">
-</div>
 
 </div>
 
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
