@@ -149,20 +149,16 @@ h1, h2 {
   margin-top: 15px;
 }
 
-/* Maintain the restart button at bottom */
-#resultScreen .restartButton {
-  margin-top: auto;
-  padding: 15px 30px;
-  font-size: 18px;
-  background-color: #358ca0;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+#resultScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centre everything */
 }
 
-#resultScreen .restartButton:hover {
-  background-color: #2a7080;
+#resultScreen .restartButton {
+  margin-top: 25px; /* sits under result card */
+  font-size: 20px;
 }
 
 /* ===== Spinner ===== */
@@ -202,5 +198,6 @@ h1, h2 {
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
   border-radius: 16px;
 }
+
 
 
