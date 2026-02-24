@@ -1,12 +1,13 @@
 /* ===== Global Styles ===== */
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #f5f7f8;
+  background: linear-gradient(135deg, #f5f7f8 0%, #e8f3f6 100%);
   margin: 0;
   text-align: center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 /* ===== Screen Containers ===== */
@@ -18,8 +19,8 @@ body {
   opacity: 0;
   transition: opacity 0.4s ease;
   flex-direction: column;
-  justify-content: center;   /* ✅ center vertically */
-  align-items: center;       /* ✅ center horizontally */
+  justify-content: center;
+  align-items: center;
 }
 
 .screen.active {
@@ -34,58 +35,72 @@ h1, h2 {
 }
 
 /* ===== Start Page ===== */
-#startScreen .footerLogo {
-  max-width: 240px;
-  width: 100%;
-  margin: 30px auto 10px auto;
-}
-
 #startScreen p.description {
-  font-size: 16px;
-  color: #666;
+  font-size: 18px;
+  color: #555;
   margin-bottom: 30px;
 }
 
 /* ===== Buttons ===== */
 .bigButton, .restartButton {
-  font-size: 28px;
+  font-size: 26px;
   padding: 20px 40px;
   background: #358ca0;
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
 .bigButton:hover, .restartButton:hover {
   background-color: #2a7080;
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
+.bigButton:active, .restartButton:active {
+  transform: scale(0.96);
+}
+
+/* ===== Pulse Animation (Start Button) ===== */
+.pulse {
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* ===== Answer Buttons ===== */
 .answerButton {
-  display: block;
-  width: 100%;              /* ✅ full width */
-  margin: 10px 0;           /* space between buttons */
-  padding: 18px;
+  width: 100%;
+  margin: 14px 0;
+  padding: 22px;
   font-size: 20px;
-  border-radius: 10px;
+  border-radius: 16px;
   border: none;
   background: white;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
-  box-sizing: border-box;   /* prevents overflow */
-}
-
-/* Make answer container full width inside card */
-#answers {
-  width: 100%;
+  transition: all 0.18s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
 
 .answerButton:hover {
-  background: #e8f3f6;
-  transform: scale(1.02);
+  background: #358ca0;
+  color: white;
+  transform: scale(1.04);
+}
+
+.answerButton:active {
+  transform: scale(0.97);
+}
+
+/* ===== Answers Container ===== */
+#answers {
+  width: 100%;
 }
 
 /* ===== Progress ===== */
@@ -101,22 +116,23 @@ h1, h2 {
 #progressBar {
   width: 0%;
   height: 100%;
-  background: #358ca0;
-  transition: width 0.5s ease;
+  background: linear-gradient(90deg, #358ca0, #4fd1e0);
+  transition: width 0.4s ease;
   border-radius: 6px;
 }
 
 /* ===== Question Card Styling ===== */
 .screen .contentContainer .questionCard {
   background: white;
-  padding: 20px;
-  border-radius: 16px;
-  width: 600px;          /* ✅ fixed width */
-  max-width: 90%;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  padding: 30px;
+  border-radius: 18px;
+  width: 600px;
+  max-width: 92%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeInUp 0.4s ease;
 }
 
 /* ===== Result Screen ===== */
@@ -124,28 +140,30 @@ h1, h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
+  justify-content: center;
 }
 
 .resultCard {
   background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   max-width: 90%;
   margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.resultCard:hover {
+  transform: translateY(-4px);
 }
 
 .resultCard img {
   max-width: 90%;
-  width: 300px;
+  width: 320px;
   margin-top: 15px;
   display: block;
 }
@@ -156,15 +174,8 @@ h1, h2 {
   margin-top: 15px;
 }
 
-#resultScreen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* centre everything */
-}
-
 #resultScreen .restartButton {
-  margin-top: 25px; /* sits under result card */
+  margin-top: 25px;
   font-size: 20px;
 }
 
@@ -184,14 +195,14 @@ h1, h2 {
   100% { transform: rotate(360deg); }
 }
 
-/* ===== Logo at bottom of every page ===== */
+/* ===== Logo ===== */
 .footerLogo {
   max-width: 240px;
   width: 100%;
   margin: 30px auto 10px auto;
 }
 
-/* ===== Make quiz content fill screen nicely ===== */
+/* ===== Content Container ===== */
 .screen .contentContainer {
   flex-grow: 1;
   display: flex;
@@ -201,11 +212,34 @@ h1, h2 {
   width: 100%;
 }
 
-/* ===== Optional enhancements ===== */
-.screen .contentContainer .cardShadow {
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  border-radius: 16px;
+/* ===== Confetti ===== */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 14px;
+  opacity: 0.8;
+  animation: fall linear forwards;
 }
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+  }
+}
+
+/* ===== Subtle Entrance Animation ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 
 
