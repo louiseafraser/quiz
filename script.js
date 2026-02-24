@@ -1,12 +1,44 @@
 const results = {
-  hero: { title: "The Everyday Hero", gif: "gifs/everyday-hero.gif" },
-  care: { title: "The Care Champion", gif: "gifs/care-champion.gif" },
-  life: { title: "The Life Guide", gif: "gifs/life-guide.gif" },
-  fixer: { title: "The Skilled Fixer", gif: "gifs/skilled-fixer.gif" },
-  outdoor: { title: "The Outdoor Optimiser", gif: "gifs/outdoor-optimiser.gif" },
-  inspector: { title: "The Sharp Inspector", gif: "gifs/sharp-inspector.gif" },
-  connector: { title: "The Community Connector", gif: "gifs/community-connector.gif" },
-  strategist: { title: "The Service Strategist", gif: "gifs/service-strategist.gif" }
+  hero: { 
+    title: "The Everyday Hero", 
+    gif: "gifs/everyday-hero.gif",
+    color: "#E63946"
+  },
+  care: { 
+    title: "The Care Champion", 
+    gif: "gifs/care-champion.gif",
+    color: "#D64573"
+  },
+  life: { 
+    title: "The Life Guide", 
+    gif: "gifs/life-guide.gif",
+    color: "#1D3557"
+  },
+  fixer: { 
+    title: "The Skilled Fixer", 
+    gif: "gifs/skilled-fixer.gif",
+    color: "#F4A261"
+  },
+  outdoor: { 
+    title: "The Outdoor Optimiser", 
+    gif: "gifs/outdoor-optimiser.gif",
+    color: "#2A9D8F"
+  },
+  inspector: { 
+    title: "The Sharp Inspector", 
+    gif: "gifs/sharp-inspector.gif",
+    color: "#4A4A4A"
+  },
+  connector: { 
+    title: "The Community Connector", 
+    gif: "gifs/community-connector.gif",
+    color: "#00B4D8"
+  },
+  strategist: { 
+    title: "The Service Strategist", 
+    gif: "gifs/service-strategist.gif",
+    color: "#6A4C93"
+  }
 };
 
 let scores;
@@ -160,7 +192,7 @@ function showQuestion() {
   shuffleArray([...q.answers]).forEach(answer => {
     const btn = document.createElement("button");
     btn.className = "answerButton";
-    btn.textContent = answer.text;
+    btn.innerHTML = "✨ " + answer.text;
     btn.onclick = () => {
       scores[answer.main] += 2;
       if (answer.secondary) scores[answer.secondary] += 1;
@@ -187,12 +219,36 @@ function showResult() {
     scores[a] > scores[b] ? a : b
   );
 
-  document.getElementById("resultTitle").textContent = results[topType].title;
-  document.getElementById("resultGif").src = results[topType].gif;
+  const result = results[topType];
+
+  document.getElementById("resultTitle").textContent = result.title;
+  document.getElementById("resultGif").src = result.gif;
+
+  // Apply theme colour
+  document.querySelector(".resultCard").style.borderTop = 
+    "8px solid " + result.color;
+
+  document.querySelector(".restartButton").style.background = 
+    result.color;
+
+  launchConfetti(result.color);
 
   showScreen("resultScreen");
 }
 
 function restartQuiz() {
   showScreen("startScreen");
+}
+
+function launchConfetti(color) {
+  for (let i = 0; i < 40; i++) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.backgroundColor = color;
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.animationDuration = 2 + Math.random() * 2 + "s";
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 4000);
+  }
 }
