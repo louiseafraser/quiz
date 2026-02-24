@@ -35,9 +35,9 @@ h1, h2 {
 
 /* ===== Start Page ===== */
 #startScreen .footerLogo {
-  max-width: 200px;   /* was 120px */
+  max-width: 240px;
   width: 100%;
-  margin: 20px auto 10px auto;
+  margin: 30px auto 10px auto;
 }
 
 #startScreen p.description {
@@ -186,8 +186,9 @@ h1, h2 {
 
 /* ===== Logo at bottom of every page ===== */
 .footerLogo {
-  max-width: 120px;
-  margin: 20px auto 10px auto;
+  max-width: 240px;
+  width: 100%;
+  margin: 30px auto 10px auto;
 }
 
 /* ===== Make quiz content fill screen nicely ===== */
@@ -205,6 +206,7 @@ h1, h2 {
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
   border-radius: 16px;
 }
+
 
 
 
