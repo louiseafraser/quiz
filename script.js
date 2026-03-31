@@ -224,43 +224,43 @@ function showResult() {
   const resultImage = document.getElementById("resultGif");
   const resultCard = document.querySelector(".resultCard");
 
-  // Set title immediately
+  // Set title + colours immediately
   document.getElementById("resultTitle").textContent = result.title;
-
-  // Apply theme colour
   resultCard.style.borderTop = "8px solid " + result.color;
   document.querySelector(".restartButton").style.background = result.color;
 
-  // 🔥 Hide image + reset
-  resultImage.style.opacity = 0;
-  resultImage.src = "";
+  // 🔥 HARD RESET IMAGE (this is the key fix)
+  resultImage.style.display = "none";   // completely remove from layout
+  resultImage.src = "";                 // remove old image
 
-  // 🧠 Preload image BEFORE showing screen
+  // Preload new image
   const img = new Image();
-  img.src = result.gif + "?t=" + new Date().getTime(); // cache bust
+  img.src = result.gif + "?t=" + new Date().getTime();
 
   img.onload = () => {
-    // Set image only when fully loaded
+    // Set correct image
     resultImage.src = img.src;
 
-    // Show result screen AFTER image ready
+    // Show result screen AFTER ready
     showScreen("resultScreen");
 
-    // Small delay for smoother animation
+    // Re-show image cleanly
     setTimeout(() => {
+      resultImage.style.display = "block";  // bring back
       resultImage.style.opacity = 1;
       resultImage.classList.add("pop");
 
-      // 🎉 Launch confetti AFTER reveal
       launchConfetti(result.color);
-    }, 100);
+    }, 50);
   };
 }
 
 function restartQuiz() {
   const img = document.getElementById("resultGif");
   img.src = "";
+  img.style.display = "none";   // 👈 important
   img.classList.remove("pop");
+
   showScreen("startScreen");
 }
 
