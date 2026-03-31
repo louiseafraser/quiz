@@ -234,25 +234,25 @@ function showResult() {
   resultImage.src = "";                 // remove old image
 
   // Preload new image
-  const img = new Image();
-  img.src = result.gif + "?t=" + new Date().getTime();
+const img = new Image();
+img.src = result.gif + "?t=" + new Date().getTime();
 
-  img.onload = () => {
-    // Set correct image
-    resultImage.src = img.src;
+img.onload = () => {
+  // Set the image source
+  resultImage.src = img.src;
 
-    // Show result screen AFTER ready
-    showScreen("resultScreen");
+  // Show screen AFTER image is ready
+  showScreen("resultScreen");
 
-    // Re-show image cleanly
-setTimeout(() => {
-  resultImage.style.display = "inline-block";  // ✅ FIXED
-  resultImage.style.opacity = 1;
-  resultImage.classList.add("pop");
+  // Force browser to apply layout before showing
+  requestAnimationFrame(() => {
+    resultImage.style.display = "inline-block";
+    resultImage.style.opacity = 1;
+    resultImage.classList.add("pop");
 
-  launchConfetti(result.color);
-}, 50);
-  };
+    launchConfetti(result.color);
+  });
+};
 }
 
 function restartQuiz() {
@@ -276,4 +276,3 @@ function launchConfetti(color) {
     setTimeout(() => confetti.remove(), 4000);
   }
 }
-console.log("Image loaded:", img.src);
