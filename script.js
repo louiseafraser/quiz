@@ -221,22 +221,46 @@ function showResult() {
 
   const result = results[topType];
 
+  const resultImage = document.getElementById("resultGif");
+  const resultCard = document.querySelector(".resultCard");
+
+  // Set title immediately
   document.getElementById("resultTitle").textContent = result.title;
-  document.getElementById("resultGif").src = result.gif;
 
   // Apply theme colour
-  document.querySelector(".resultCard").style.borderTop = 
-    "8px solid " + result.color;
+  resultCard.style.borderTop = "8px solid " + result.color;
+  document.querySelector(".restartButton").style.background = result.color;
 
-  document.querySelector(".restartButton").style.background = 
-    result.color;
+  // 🔥 Hide image + reset
+  resultImage.style.opacity = 0;
+  resultImage.src = "";
 
-  launchConfetti(result.color);
+  // 🧠 Preload image BEFORE showing screen
+  const img = new Image();
+  img.src = result.gif + "?t=" + new Date().getTime(); // cache bust
 
-  showScreen("resultScreen");
+  img.onload = () => {
+    // Set image only when fully loaded
+    resultImage.src = img.src;
+
+    // Show result screen AFTER image ready
+    showScreen("resultScreen");
+
+    // Small delay for smoother animation
+    setTimeout(() => {
+      resultImage.style.opacity = 1;
+      resultImage.classList.add("pop");
+
+      // 🎉 Launch confetti AFTER reveal
+      launchConfetti(result.color);
+    }, 100);
+  };
 }
 
 function restartQuiz() {
+  const img = document.getElementById("resultGif");
+  img.src = "";
+  img.classList.remove("pop");
   showScreen("startScreen");
 }
 
