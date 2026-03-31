@@ -245,13 +245,13 @@ function showResult() {
     showScreen("resultScreen");
 
     // Re-show image cleanly
-    setTimeout(() => {
-      resultImage.style.display = "block";  // bring back
-      resultImage.style.opacity = 1;
-      resultImage.classList.add("pop");
+setTimeout(() => {
+  resultImage.style.display = "inline-block";  // ✅ FIXED
+  resultImage.style.opacity = 1;
+  resultImage.classList.add("pop");
 
-      launchConfetti(result.color);
-    }, 50);
+  launchConfetti(result.color);
+}, 50);
   };
 }
 
