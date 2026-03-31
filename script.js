@@ -276,3 +276,4 @@ function launchConfetti(color) {
     setTimeout(() => confetti.remove(), 4000);
   }
 }
+console.log("Image loaded:", img.src);
