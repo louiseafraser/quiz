@@ -208,51 +208,76 @@ function nextQuestion() {
     showQuestion();
   } else {
     showScreen("loadingScreen");
-    setTimeout(() => {
-      showResult();
-    }, 2000);
+    showResult();
   }
 }
 
-function showResult() {
-  let topType = Object.keys(scores).reduce((a, b) =>
+function loadResultImage(result) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.id = "resultGif";
+    image.alt = result.title;
+    image.style.display = "none";
+    image.style.opacity = 0;
+
+    image.onload = async () => {
+      // Wait until the first frame is decoded before the result screen is shown.
+      try {
+        if (image.decode) await image.decode();
+      } catch (error) {
+        // The file has loaded, so it is still safe to display if decode() is unavailable.
+      }
+      resolve(image);
+    };
+
+    image.onerror = () => reject(new Error("Unable to load " + result.gif));
+    image.src = result.gif;
+  });
+}
+
+async function showResult() {
+  const topType = Object.keys(scores).reduce((a, b) =>
     scores[a] > scores[b] ? a : b
   );
 
   const result = results[topType];
-
-  const resultImage = document.getElementById("resultGif");
+  const currentImage = document.getElementById("resultGif");
   const resultCard = document.querySelector(".resultCard");
+  const minimumLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
 
-  // Set title + colours immediately
+  // Keep the previous result hidden while the new asset loads.
+  currentImage.style.display = "none";
+  currentImage.style.opacity = 0;
+
   document.getElementById("resultTitle").textContent = result.title;
   resultCard.style.borderTop = "8px solid " + result.color;
   document.querySelector(".restartButton").style.background = result.color;
 
-  // 🔥 HARD RESET IMAGE (this is the key fix)
-  resultImage.style.display = "none";   // completely remove from layout
-  resultImage.src = "";                 // remove old image
+  try {
+    // Load the correct GIF during the calculation screen, without bypassing cache.
+    const [newImage] = await Promise.all([
+      loadResultImage(result),
+      minimumLoadingTime
+    ]);
 
-  // Preload new image
-const img = new Image();
-img.src = result.gif + "?t=" + new Date().getTime();
+    // A fresh element prevents the browser reusing the previous GIF's rendered frame.
+    currentImage.replaceWith(newImage);
+    showScreen("resultScreen");
 
-img.onload = () => {
-  // Set the image source
-  resultImage.src = img.src;
+    requestAnimationFrame(() => {
+      newImage.style.display = "inline-block";
+      newImage.style.opacity = 1;
+      newImage.classList.add("pop");
+      launchConfetti(result.color);
+    });
+  } catch (error) {
+    console.error(error);
+    await minimumLoadingTime;
 
-  // Show screen AFTER image is ready
-  showScreen("resultScreen");
-
-  // Force browser to apply layout before showing
-  requestAnimationFrame(() => {
-    resultImage.style.display = "inline-block";
-    resultImage.style.opacity = 1;
-    resultImage.classList.add("pop");
-
+    // Still show the result text if an image cannot be loaded.
+    showScreen("resultScreen");
     launchConfetti(result.color);
-  });
-};
+  }
 }
 
 function restartQuiz() {
