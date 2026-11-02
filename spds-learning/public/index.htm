@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What's Your Learning Superpower?</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <div id="startScreen" class="screen active">
+    <h1>What's Your Learning Superpower?</h1>
+    <p class="description">Discover what makes you tick when it comes to learning!</p>
+    <p class="introduction">Whether you're a curious investigator, a practical problem-solver or someone who learns through sharing ideas, everyone brings something different to the workplace.</p>
+    <p class="introduction">Answer 10 quick questions to discover your learning superpower!</p>
+    <button class="bigButton pulse" onclick="startQuiz()">Tap to Start</button>
+    <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland">
+  </div>
+  <div id="questionScreen" class="screen">
+    <div class="contentContainer"><div class="questionCard">
+      <div id="progressContainer" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><div id="progressBar"></div></div>
+      <div id="progress"></div>
+      <h2 id="questionText" tabindex="-1"></h2>
+      <div id="answers"></div>
+    </div></div>
+    <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland">
+  </div>
+  <div id="loadingScreen" class="screen" role="status">
+    <h2>Calculating your result...</h2><div class="spinner"></div>
+    <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland">
+  </div>
+  <div id="resultScreen" class="screen">
+    <div class="resultCard">
+      <p>Your Learning Superpower Is...</p>
+      <h2 id="resultTitle" tabindex="-1"></h2>
+      <p id="resultSummary"></p>
+      <p class="instruction">Collect your Learning Superpower information sheet to discover more!</p>
+    </div>
+    <button class="restartButton" onclick="restartQuiz()">Restart Quiz</button>
+    <img src="images/myjobscotland-logo.svg" class="footerLogo" alt="myjobscotland">
+  </div>
+</div>
+<script src="quiz-data.js"></script>
+<script src="tracking.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
