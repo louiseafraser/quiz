@@ -1,0 +1,32 @@
+// Optional real browser QA. Uses mocked totals and a faster in-memory playlist.
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict');
+const playlist=require('../public/slideshow/playlist.json');
+(async()=>{
+ const browser=await chromium.launch({headless:true});
+ const page=await browser.newPage({viewport:{width:1920,height:1080}});
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ let unavailable=false,counts={total:10,personalities:{EX:3,PP:2,CC:2,RT:1,SA:1,CH:1}};
+ await page.route('**/playlist.json',r=>r.fulfill({json:{...playlist,pollSeconds:5,transitionMs:100,slides:playlist.slides.map(s=>({...s,duration:1}))}}));
+ await page.route('**/learning-api/display-results',r=>unavailable?r.abort('failed'):r.fulfill({json:counts}));
+ await page.goto((process.env.QUIZ_URL||'http://127.0.0.1:8090')+'/slideshow/');
+ await page.locator('.active .results').waitFor();
+ assert.equal(await page.locator('.active [data-total]').innerText(),'10');
+ assert.equal(await page.locator('.active [data-personality="EX"] [data-percent]').innerText(),'30.0%');
+ assert.equal(await page.locator('.active .row').count(),6);
+ await page.waitForTimeout(1200);
+ await page.locator('.active > img').waitFor();
+ unavailable=true;
+ await page.waitForTimeout(5500);
+ await page.locator('.active .results').waitFor();
+ assert.equal(await page.locator('.active [data-total]').innerText(),'10');
+ assert.ok((await page.locator('.active [data-status]').innerText()).includes('latest available'));
+ unavailable=false;counts={total:0,personalities:{EX:0,PP:0,CC:0,RT:0,SA:0,CH:0}};
+ await page.waitForTimeout(5500);
+ await page.locator('.active .results').waitFor();
+ assert.equal(await page.locator('.active [data-total]').innerText(),'0');
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth && document.documentElement.scrollHeight<=innerHeight));
+ await page.screenshot({path:'/tmp/spds-slideshow-qa.png'});
+ assert.deepEqual(errors,[]);
+ await browser.close();console.log('Browser slideshow checks passed.');
+})().catch(e=>{console.error(e);process.exit(1)});

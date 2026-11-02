@@ -53,6 +53,16 @@ class TrackingTests(unittest.TestCase):
                 with self.assertRaises(HTTPError) as error: post(invalid)
                 self.assertEqual(error.exception.code, 400)
             self.assertEqual(s.totals(self.path)['total'], 1)
+            with urlopen(base+'/display-results') as response:
+                self.assertEqual(response.headers['Cache-Control'], 'no-store')
+                self.assertTrue(response.headers['Content-Type'].startswith('application/json'))
+                display = json.load(response)
+            self.assertEqual(display, {'total': 1, 'personalities': {'EX':0, 'PP':0, 'CC':0, 'RT':0, 'SA':1, 'CH':0}})
+            with self.assertRaises(HTTPError) as error:
+                urlopen(Request(base+'/display-results', data=b'{}', headers={'Content-Type':'application/json'}))
+            self.assertEqual(error.exception.code, 404)  # Display endpoint cannot write.
+            with urlopen(base+'/totals') as response:
+                self.assertIn('Total completions', response.read().decode())
         finally:
             server.shutdown()
             server.server_close()

@@ -77,9 +77,15 @@ class Handler(BaseHTTPRequestHandler):
         self.respond(200, {'recorded': added})
 
     def do_GET(self):
-        if self.path != '/totals':
+        if self.path not in ('/totals', '/display-results'):
             return self.respond(404, {'error': 'Not found'})
-        data = totals(self.server.db_path)
+        try:
+            data = totals(self.server.db_path)
+        except sqlite3.Error:
+            return self.respond(503, {'error': 'Please retry'})
+        if self.path == '/display-results':
+            # Read-only aggregate data for the public conference TV, no receipts.
+            return self.respond(200, data)
         rows = ''.join(f'<tr><td>{name}</td><td>{data["personalities"][key]}</td></tr>' for key, name in zip(TYPES, NAMES))
         self.respond(200, '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width">'
                      '<title>Learning Superpower totals</title><style>body{font:20px Arial;margin:40px;color:#243b42}'
