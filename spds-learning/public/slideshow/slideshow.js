@@ -54,7 +54,7 @@ function fitStage() {
 function resultsCard() {
   const card = document.createElement('div');
   card.className = 'results';
-  card.innerHTML = `<header><div><p class="eyebrow">SPDS CONFERENCE · LIVE RESULTS</p><h1>Our learning superpowers</h1><p class="subtitle">Six different strengths. One learning community.</p></div><div class="total"><strong data-total>—</strong><span>completed quizzes</span></div></header><div class="chart" role="list" aria-label="Learning superpower results"></div><footer><span data-status></span><img src="../images/myjobscotland-logo.svg" alt="myjobscotland"></footer>`;
+  card.innerHTML = `<span class="brand-cloud" aria-hidden="true"></span><header><div><p class="eyebrow">SPDS CONFERENCE · LIVE RESULTS</p><h1>What's your learning superpower?</h1><p class="subtitle">See how SPDS delegates are discovering their learning strengths.</p></div><div class="total"><strong data-total>—</strong><span>completed quizzes</span></div></header><div class="chart" role="list" aria-label="Learning superpower results"></div><p class="invitation">Pick up a tablet, take the quiz and collect your result card!</p><footer><span data-status></span><img src="../images/myjobscotland-logo.svg" alt="myjobscotland"></footer>`;
   const chart = card.querySelector('.chart');
   for (const [id, name] of PERSONALITIES) {
     const row = document.createElement('div');
@@ -63,6 +63,7 @@ function resultsCard() {
     row.setAttribute('role', 'listitem');
     row.innerHTML = '<span class="name"></span><div class="track" aria-hidden="true"><div class="fill" style="width:0%"></div></div><span class="value"><span data-count>—</span><small data-percent>—</small></span>';
     row.querySelector('.name').textContent = name;
+    row.querySelector('.fill').style.backgroundColor = `var(--colour-${id.toLowerCase()})`;
     chart.appendChild(row);
   }
   return card;

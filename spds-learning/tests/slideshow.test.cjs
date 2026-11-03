@@ -24,8 +24,10 @@ function environment(path = '/slideshow/') {
  const {context:c,timers,layers}=environment();
  c.input=config;
  vm.runInContext('playlist = validatePlaylist(input)',c);
- assert.equal(vm.runInContext('playlist.slides.length',c),4);
+ assert.equal(vm.runInContext('playlist.slides.length',c),6);
  assert.equal(vm.runInContext('playlist.slides.find(s=>s.type==="results").duration',c),30);
+ assert.equal(config.slides.reduce((total, slide) => total + slide.duration, 0), 120);
+ assert.deepEqual(config.slides.map(s => s.type), ['image','image','results','image','image','image']);
  assert.equal(vm.runInContext('endpoint',c),'/learning-api/display-results');
  const p=environment('/learning-preview/slideshow/');
  assert.equal(vm.runInContext('endpoint',p.context),'/learning-test-api/display-results');
@@ -46,7 +48,7 @@ function environment(path = '/slideshow/') {
  assert.ok(layers[1].child);
  assert.ok(timers.some(t=>t.ms===18000));
  vm.runInContext('resultsCard = () => document.createElement("div")',c);
- for(let i=0;i<4;i++) await c.advance();
+ for(let i=0;i<6;i++) await c.advance();
  assert.equal(vm.runInContext('position',c),0); // Wraps back to the first slide.
  assert.ok(timers.some(t=>t.ms===30000));
  vm.runInContext('innerWidth=1280;innerHeight=720;fitStage()',c);

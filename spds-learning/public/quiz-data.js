@@ -3,32 +3,32 @@ const results = {
   "EX": {
     "title": "The Curious Explorer",
     "summary": "Your curiosity drives you to discover, investigate and turn new knowledge into valuable insights.",
-    "color": "#358ca0"
+    "color": "var(--colour-ex)"
   },
   "PP": {
     "title": "The Practical Pioneer",
     "summary": "You learn by getting stuck in, experimenting with new ideas and turning knowledge into action.",
-    "color": "#358ca0"
+    "color": "var(--colour-pp)"
   },
   "CC": {
     "title": "The Collaborative Connector",
     "summary": "You thrive on sharing ideas, learning from others and bringing people together to grow.",
-    "color": "#358ca0"
+    "color": "var(--colour-cc)"
   },
   "RT": {
     "title": "The Reflective Thinker",
     "summary": "You turn experiences into valuable insights through thoughtful reflection and considered decisions.",
-    "color": "#358ca0"
+    "color": "var(--colour-rt)"
   },
   "SA": {
     "title": "The Strategic Achiever",
     "summary": "You turn ambition into achievement through clear goals, focused development and steady progress.",
-    "color": "#358ca0"
+    "color": "var(--colour-sa)"
   },
   "CH": {
     "title": "The Creative Challenger",
     "summary": "You question the conventional, explore possibilities and find innovative ways to move forward.",
-    "color": "#358ca0"
+    "color": "var(--colour-ch)"
   }
 };
 const questions = [

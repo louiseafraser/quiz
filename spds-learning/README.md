@@ -9,8 +9,8 @@ A small adaptation of the existing quiz, plus a separate automatic TV slideshow.
 - `public/index.htm`: 10-question quiz, randomised answers, one point per selection, six short title/summary results, calculating screen, restart and confetti. Original branding and layout retained.
 - `public/quiz-data.js`: all 60 answers and six personality summaries from the supplied brief. Ties use the latest question answered among tied personalities, independent of random display order.
 - `public/tracking.js`: anonymous completion IDs and an offline retry queue. Authoritative totals are stored centrally, not in the browser. Pending submissions survive refresh where browser storage is available.
-- `public/slideshow/index.html`: independent 16:9 TV display. Three placeholder image slides at 18 seconds each, a 30-second results slide, crossfades and fullscreen control.
-- `public/slideshow/playlist.json`: image filenames, order and durations; results polling and transition timing. Replace the SVG placeholders with Canva PNG/JPG exports at 1920 × 1080.
+- `public/slideshow/index.html`: independent 16:9 TV display. Five finished PNG slides at 18 seconds each, a 30-second results slide, crossfades and fullscreen control.
+- `public/slideshow/playlist.json`: image filenames, order and durations; results polling and transition timing. The six entries total 120 seconds. Replace the five PNGs with new 1920 × 1080 exports as needed.
 - `tracking/server.py`: shared transactional counter. `/display-results` exposes only read-only aggregate JSON for the TV; `/totals` is an administration HTML page protected by NGINX.
 - `tracking/`: systemd unit, narrow NGINX routes, and separate staging/live full configs retaining the existing domain and SSL certificate paths.
 
@@ -50,3 +50,31 @@ node spds-learning/tests/slideshow-browser.cjs
 ```
 
 Actual browser/TV visual QA remains outstanding: this environment has no installed Chromium executable and the attempted download failed. No rendered-browser pass is claimed. Actual Surface/TV appearance, NGINX syntax/authentication, certificate behavior and reboot persistence must be checked by Louise in the preview setup before the live switch. No droplet access was attempted.
+
+## Final branding update — 3 November 2026
+
+Shared `public/brand.css` contains the six approved working colours and local webfont declarations. Both pages load it; result accents, bars and confetti reference the same CSS tokens. HK Nova regular, medium and bold are supplied WOFF2 files; Geomanist regular is the fallback. No external font service or new runtime dependency is used. The supplied Geomanist webfont licence is included under `public/fonts/`; the archive did not contain a separate HK Nova licence record, so retain the organisation's existing entitlement record.
+
+Result titles, summaries, questions, answers, scoring and tracking are unchanged. Confetti uses 40 short-lived pieces in the result colour with lighter/darker and pale accents, respects reduced motion, and is guarded by completion ID. Navy text/buttons retain contrast for the amber and green results. Backgrounds use flat fills only.
+
+To update TV artwork: replace the PNGs under `public/slideshow/slides/`, or edit each image `src`, `alt` and `duration` in `public/slideshow/playlist.json`. Keep exactly one `results` entry. Current order is Welcome, Take the Quiz, Live Results, Six Learning Superpowers, Different Strengths/Shared Potential, Reminder (18/18/30/18/18/18 seconds). Refresh the TV browser once after copying updates. Images use `object-fit: contain`.
+
+### Copying this update to the existing server
+
+Only run these commands when ready to update the named environment; they are provided for Louise and were not executed by this change. Preview first:
+
+```bash
+cd /opt/spds-learning-source
+git switch spds-learning-superpower
+git pull --ff-only origin spds-learning-superpower
+rsync -av spds-learning/public/ /var/www/spds-learning-preview/
+```
+
+Open `/learning-preview/` and `/learning-preview/slideshow/`; check fonts, all six results and TV readability. After explicit approval to update live:
+
+```bash
+cd /opt/spds-learning-source
+rsync -av spds-learning/public/ /var/www/spds-learning-live/
+```
+
+Refresh tablet and TV browsers. No API, database, service or NGINX changes are required. The original LEGO quiz is untouched.

@@ -2,6 +2,7 @@ let currentQuestion = 0;
 let selectedAnswers = [];
 let completionId = null;
 let resultTimer = null;
+let celebratedCompletion = null;
 
 function calculateResult(answers) {
   const scores = Object.fromEntries(Object.keys(results).map(id => [id, 0]));
@@ -60,6 +61,7 @@ function showResult() {
   const topType = calculateResult(selectedAnswers);
   const result = results[topType];
   showScreen('loadingScreen');
+  document.getElementById('resultScreen').style.setProperty('--result-colour', result.color);
   document.getElementById('resultTitle').textContent = result.title;
   document.getElementById('resultSummary').textContent = result.summary;
   // Save before showing the result; failure never blocks the delegate.
@@ -67,7 +69,10 @@ function showResult() {
   resultTimer = setTimeout(() => {
     showScreen('resultScreen');
     document.getElementById('resultTitle').focus({preventScroll: true});
-    launchConfetti(result.color);
+    if (celebratedCompletion !== completionId) {
+      celebratedCompletion = completionId;
+      launchConfetti(result.color);
+    }
   }, 2000);
 }
 function restartQuiz() {
@@ -85,7 +90,8 @@ function launchConfetti(color) {
   for (let i = 0; i < 40; i++) {
     const confetti = document.createElement('div');
     confetti.className = 'confetti';
-    confetti.style.backgroundColor = color;
+    const palette = [color, color, `color-mix(in srgb, ${color} 55%, white)`, `color-mix(in srgb, ${color} 70%, black)`, '#F2FBFC'];
+    confetti.style.backgroundColor = palette[i % palette.length];
     confetti.style.left = Math.random() * 100 + 'vw';
     confetti.style.animationDuration = 2 + Math.random() * 2 + 's';
     document.body.appendChild(confetti);
