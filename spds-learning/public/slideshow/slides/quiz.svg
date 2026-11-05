@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#edf5f6"/>
+<circle cx="1780" cy="90" r="510" fill="#d6eaee"/><circle cx="1900" cy="80" r="340" fill="#358ca0" opacity=".14"/>
+<rect x="108" y="120" width="90" height="8" rx="4" fill="#358ca0"/>
+<g font-family="Arial, Helvetica, sans-serif"><text x="108" y="200" fill="#358ca0" font-size="27" font-weight="700" letter-spacing="4">WHAT’S YOUR LEARNING SUPERPOWER?</text>
+<text x="108" y="420" fill="#173d47" font-size="112" font-weight="700">Curious? Creative?</text>
+<text x="108" y="555" fill="#358ca0" font-size="112" font-weight="700">Practical?</text>
+<text x="112" y="700" fill="#55717a" font-size="35">Visit the myjobscotland stand and try our 10-question quiz.</text>
+<line x1="108" y1="905" x2="1812" y2="905" stroke="#bbd9df" stroke-width="2"/>
+<text x="108" y="976" fill="#358ca0" font-size="34" font-weight="700">myjobscotland</text>
+<text x="1812" y="976" text-anchor="end" fill="#55717a" font-size="24">SPDS Conference · Placeholder slide</text></g></svg>

@@ -1,0 +1,300 @@
+/* ===== Global Styles ===== */
+body {
+  font-family: var(--brand-font);
+  background: var(--results-background);
+  color: var(--brand-navy);
+  margin: 0;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ===== Screen Containers ===== */
+.screen {
+  display: none;
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* ===== Headers ===== */
+h1, h2 {
+  color: #358ca0;
+  margin: 10px 0;
+}
+
+/* ===== Start Page ===== */
+#startScreen p.description {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* ===== Buttons ===== */
+.bigButton, .restartButton {
+  font-size: 26px;
+  padding: 20px 40px;
+  background: #358ca0;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.bigButton:hover, .restartButton:hover {
+  background-color: #2a7080;
+  transform: scale(1.06);
+}
+
+.bigButton:active, .restartButton:active {
+  transform: scale(0.96);
+}
+
+/* ===== Pulse Animation (Start Button) ===== */
+.pulse {
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* ===== Answer Buttons ===== */
+.answerButton {
+  width: 100%;
+  margin: 14px 0;
+  padding: 22px;
+  font-size: 20px;
+  border-radius: 16px;
+  border: none;
+  background: white;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+.answerButton:hover {
+  background: #358ca0;
+  color: white;
+  transform: scale(1.04);
+}
+
+.answerButton:active {
+  transform: scale(0.97);
+}
+
+/* ===== Answers Container ===== */
+#answers {
+  width: 100%;
+}
+
+/* ===== Progress ===== */
+#progressContainer {
+  width: 90%;
+  height: 12px;
+  background: #ddd;
+  border-radius: 6px;
+  margin: 10px auto 20px auto;
+  overflow: hidden;
+}
+
+#progressBar {
+  width: 0%;
+  height: 100%;
+  background: #358ca0;
+  transition: width 0.4s ease;
+  border-radius: 6px;
+}
+
+/* ===== Question Card Styling ===== */
+.screen .contentContainer .questionCard {
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  width: 600px;
+  max-width: 92%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp 0.4s ease;
+}
+
+/* ===== Result Screen ===== */
+#resultScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.resultCard {
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 90%;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.resultCard:hover {
+  transform: translateY(-4px);
+}
+
+.resultCard img {
+  max-width: 90%;
+  width: 320px;
+  margin-top: 15px;
+  display: block;
+}
+
+.resultCard p.instruction {
+  font-size: 16px;
+  color: #666;
+  margin-top: 15px;
+}
+
+#resultScreen .restartButton {
+  margin-top: 25px;
+  font-size: 20px;
+}
+
+/* ===== Spinner ===== */
+.spinner {
+  margin: 40px auto;
+  width: 80px;
+  height: 80px;
+  border: 8px solid #e0e0e0;
+  border-top: 8px solid #358ca0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== Logo ===== */
+.footerLogo {
+  max-width: 240px;
+  width: 100%;
+  margin: 30px auto 10px auto;
+}
+
+/* ===== Content Container ===== */
+.screen .contentContainer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* ===== Confetti ===== */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 14px;
+  opacity: 0.8;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+  }
+}
+
+/* ===== Subtle Entrance Animation ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#resultGif {
+  display: none;              /* 🔥 prevents initial flash */
+  opacity: 0;                 /* start hidden */
+  transition: opacity 0.3s ease;
+}
+/* Pop animation */
+.pop {
+  animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
+/* Learning quiz: retain the original design, fit the longer conference answers. */
+#resultScreen:not(.active) { display: none; }
+.introduction { max-width: 640px; color: #444; line-height: 1.5; font-size: 18px; }
+#startScreen .bigButton { margin-top: 20px; }
+.contentContainer { min-width: 0; }
+.screen .contentContainer .questionCard { box-sizing: border-box; width: 720px; max-width: 100%; }
+.answerButton { text-align: left; line-height: 1.35; touch-action: manipulation; }
+.resultCard { box-sizing: border-box; width: 720px; border-top: 8px solid #358ca0; }
+#resultSummary { font-size: 22px; line-height: 1.5; }
+button:focus-visible { outline: 3px solid #193f49; outline-offset: 4px; }
+h2:focus { outline: none; }
+.confetti { pointer-events: none; }
+@media (max-width: 800px), (max-height: 1050px) {
+  .screen { padding: 18px; }
+  .screen .contentContainer .questionCard { padding: 22px; }
+  .answerButton { margin: 7px 0; padding: 16px; font-size: 18px; }
+  #questionText { font-size: 24px; }
+  .footerLogo { max-width: 190px; margin-top: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .confetti { display: none; }
+}
+
+button { font-family: inherit; }
+#resultScreen { --result-colour: var(--colour-ex); }
+#resultScreen .resultCard { border-top-color: var(--result-colour); }
+#resultTitle { color: var(--brand-navy); border-bottom: 5px solid var(--result-colour); padding-bottom: 12px; }
+#resultScreen .restartButton { background: var(--brand-navy); border: 4px solid var(--result-colour); }

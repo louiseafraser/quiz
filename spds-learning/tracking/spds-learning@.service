@@ -1,0 +1,20 @@
+[Unit]
+Description=SPDS Learning Superpower totals (%i)
+After=network.target
+
+[Service]
+Type=simple
+User=spds-learning
+Group=spds-learning
+EnvironmentFile=/etc/spds-learning/%i.env
+ExecStart=/usr/bin/python3 /opt/spds-learning/tracking/server.py
+Restart=on-failure
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/spds-learning/%i
+
+[Install]
+WantedBy=multi-user.target

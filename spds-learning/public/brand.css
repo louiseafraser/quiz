@@ -1,0 +1,16 @@
+/* Shared tablet / TV brand tokens. Font URLs resolve relative to this file. */
+@font-face { font-family: 'HK Nova'; src: url('fonts/HKNova-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'HK Nova'; src: url('fonts/HKNova-Medium.woff2') format('woff2'); font-weight: 500 600; font-display: swap; }
+@font-face { font-family: 'HK Nova'; src: url('fonts/HKNova-Bold.woff2') format('woff2'); font-weight: 700 900; font-display: swap; }
+@font-face { font-family: Geomanist; src: url('fonts/geomanist-regular-webfont.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+:root {
+  --colour-ex: #008B95;
+  --colour-pp: #D58A00;
+  --colour-cc: #D50065;
+  --colour-rt: #0875B9;
+  --colour-sa: #71328A;
+  --colour-ch: #558914;
+  --brand-navy: #071B42;
+  --results-background: #F2FBFC;
+  --brand-font: 'HK Nova', Geomanist, Arial, sans-serif;
+}

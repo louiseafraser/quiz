@@ -1,0 +1,40 @@
+{
+  "pollSeconds": 10,
+  "transitionMs": 800,
+  "slides": [
+    {
+      "type": "image",
+      "src": "slides/01_Welcome.png",
+      "alt": "Welcome",
+      "duration": 18
+    },
+    {
+      "type": "image",
+      "src": "slides/02_Take_Quiz_Here.png",
+      "alt": "Take the Quiz",
+      "duration": 18
+    },
+    {
+      "type": "results",
+      "duration": 30
+    },
+    {
+      "type": "image",
+      "src": "slides/03_Six_Superpowers.png",
+      "alt": "Six Learning Superpowers",
+      "duration": 18
+    },
+    {
+      "type": "image",
+      "src": "slides/04_Learning_Strengths.png",
+      "alt": "Different Strengths, Shared Potential",
+      "duration": 18
+    },
+    {
+      "type": "image",
+      "src": "slides/05_Result_Card_Reminder.png",
+      "alt": "Reminder",
+      "duration": 18
+    }
+  ]
+}

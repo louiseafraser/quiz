@@ -1,0 +1,54 @@
+# Add INSIDE the existing HTTPS server block after checking nginx -T.
+# Keep its server_name, listen and ssl_* directives unchanged.
+# Paths below are proposed NEW locations; confirm they are unused first.
+location = /learning-preview { return 301 /learning-preview/; }
+location /learning-preview/ {
+    alias /var/www/spds-learning-preview/;
+    index index.htm;
+    auth_basic "SPDS preview";
+    auth_basic_user_file /etc/spds-learning/admin.htpasswd;
+    add_header Cache-Control "no-store";
+}
+location = /learning-test-api/complete {
+    auth_basic "SPDS preview";
+    auth_basic_user_file /etc/spds-learning/admin.htpasswd;
+    client_max_body_size 512;
+    access_log off;
+    proxy_pass http://127.0.0.1:8766/complete;
+}
+location = /learning-test-api/totals {
+    auth_basic "SPDS totals";
+    auth_basic_user_file /etc/spds-learning/admin.htpasswd;
+    access_log off;
+    proxy_pass http://127.0.0.1:8766/totals;
+}
+location = /learning-api/complete {
+    client_max_body_size 512;
+    access_log off;
+    proxy_pass http://127.0.0.1:8765/complete;
+}
+location = /learning-api/totals {
+    auth_basic "SPDS totals";
+    auth_basic_user_file /etc/spds-learning/admin.htpasswd;
+    access_log off;
+    proxy_pass http://127.0.0.1:8765/totals;
+}
+# Never proxy an entire API prefix to the backend: /totals must stay protected.
+
+# Read-only aggregate JSON for the TV (no credentials or receipt hashes).
+location = /learning-api/display-results {
+    access_log off;
+    proxy_pass http://127.0.0.1:8765/display-results;
+}
+location = /learning-test-api/display-results {
+    auth_basic "SPDS preview";
+    auth_basic_user_file /etc/spds-learning/admin.htpasswd;
+    access_log off;
+    proxy_pass http://127.0.0.1:8766/display-results;
+}
+# /slideshow/ is served from the quiz public directory after the live root switch.
+# This location explicitly prevents stale playlists/results assets being cached.
+location /slideshow/ {
+    try_files $uri $uri/ =404;
+    add_header Cache-Control "no-store";
+}
