@@ -1,0 +1,78 @@
+[
+  {
+    "label": "THE SKILLS GAP",
+    "short": "Skills Gap",
+    "question": "Your workforce data indicates a shortage of specialist skills in the next five years. How would you prepare?",
+    "answers": [
+      "Apprenticeships",
+      "Succession planning",
+      "External recruitment",
+      "Shared talent pipeline",
+      "Service redesign"
+    ],
+    "descriptions": [
+      "Create additional apprenticeships now to develop future specialists.",
+      "Identify existing employees who could progress into specialist roles and provide targeted training.",
+      "Develop an early recruitment campaign to attract experienced specialists before vacancies arise.",
+      "Work with other councils to jointly develop and recruit people with the skills needed.",
+      "Invest in technology and redesign work to reduce future demand for these specialist skills."
+    ]
+  },
+  {
+    "label": "THE INVESTMENT",
+    "short": "Investment",
+    "question": "If you could introduce ONE council-wide change to improve staff retention, which would you prioritise?",
+    "answers": [
+      "Reduce working hours",
+      "Improve pay",
+      "Increase annual leave",
+      "Improve career progression",
+      "Increase workplace flexibility"
+    ],
+    "descriptions": [
+      "Trial a shorter working week with no reduction in pay, while maintaining service delivery.",
+      "Fund an additional percentage pay increase across the workforce, beyond any nationally agreed award.",
+      "Introduce additional paid annual leave days for employees across the council.",
+      "Introduce structured career pathways and funded development opportunities across council services.",
+      "Expand flexible hours, compressed working arrangements and job-sharing across eligible roles."
+    ]
+  },
+  {
+    "label": "THE NATIONAL ADVANTAGE",
+    "short": "National Advantage",
+    "question": "If councils could make ONE improvement to recruitment across Scotland, which would you prioritise?",
+    "answers": [
+      "Lower recruitment costs",
+      "Reach more candidates",
+      "Simpler applications",
+      "Better recruitment intelligence",
+      "Faster recruitment"
+    ],
+    "descriptions": [
+      "Reduce expenditure by collectively purchasing recruitment technology and services.",
+      "Run coordinated national recruitment campaigns for occupations experiencing shortages.",
+      "Make it easier for candidates to find vacancies and apply to different councils.",
+      "Use national recruitment data to identify emerging skills shortages and anticipate future demand.",
+      "Introduce shared tools and processes to reduce the time taken to recruit."
+    ]
+  },
+  {
+    "label": "THE FUTURE",
+    "short": "The Future",
+    "question": "Local government reform could bring significant changes to how councils recruit and manage their workforces. Which approach should be prioritised?",
+    "answers": [
+      "Local autonomy",
+      "Regional workforces",
+      "National specialist teams",
+      "Shared corporate services",
+      "Flexible workforce model"
+    ],
+    "descriptions": [
+      "Each organisation employs and manages its own workforce.",
+      "Staff and specialist skills are shared across services within each region.",
+      "Scarce specialist expertise is pooled nationally and made available across regions.",
+      "Recruitment, HR and other support functions are delivered through shared services, while frontline staff remain locally managed.",
+      "Employees can work across organisational boundaries as service needs change."
+    ]
+  }
+]

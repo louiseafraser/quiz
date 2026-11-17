@@ -1,0 +1,10 @@
+{
+  "headline": "A COSLA service. Delivering value through shared recruitment.",
+  "figures": [
+    {"value":"£11.98","label":"Cost per hire, 2025"},
+    {"value":"£11.95","label":"Cost per job posting, 2025"},
+    {"value":"94p","label":"Cost per application, 2025"},
+    {"value":"£360 million+","label":"Estimated advertising costs saved since 2008."}
+  ],
+  "note":"The 2025 figures relate to the reported full myjobscotland-user cohort, excluding Fife, North Lanarkshire, South Lanarkshire and Stirling."
+}

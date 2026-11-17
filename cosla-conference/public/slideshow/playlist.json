@@ -1,0 +1,12 @@
+{
+  "pollSeconds": 10,
+  "transitionSeconds": 0.65,
+  "slides": [
+    {"type":"welcome","seconds":15,"art":"homepage.png"},
+    {"type":"results","question":0,"seconds":20,"art":"highlands.png","accent":"#0a6c78"},
+    {"type":"results","question":1,"seconds":20,"art":"edinburgh.png","accent":"#a01739"},
+    {"type":"results","question":2,"seconds":20,"art":"glasgow.png","accent":"#76418c"},
+    {"type":"results","question":3,"seconds":20,"art":"south.png","accent":"#923022"},
+    {"type":"value","seconds":15,"art":"central.png"}
+  ]
+}

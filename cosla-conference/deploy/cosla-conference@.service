@@ -1,0 +1,20 @@
+[Unit]
+Description=COSLA Conference survey results (%i)
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=cosla-conference-%i
+StateDirectoryMode=0700
+UMask=0077
+EnvironmentFile=/etc/cosla-conference/%i.env
+ExecStart=/usr/bin/python3 /opt/cosla-conference/backend/server.py --database /var/lib/cosla-conference-%i/results.sqlite3 --port ${PORT} serve
+Restart=on-failure
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target

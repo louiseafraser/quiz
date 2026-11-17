@@ -1,0 +1,26 @@
+:root{color:#153f51;background:#e0f1f2;font-family:'HK Nova','Geomanist',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0}
+.shell{max-width:880px;margin:auto;min-height:100svh;background:#fff}
+header{padding:16px clamp(16px,4vw,40px);display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:700}
+header img{width:min(44%,230px);height:42px;object-fit:contain;object-position:left}
+.landscape,.banner{display:block;width:100%;height:auto}
+.banner{max-height:clamp(58px,12vh,132px);object-fit:cover;border-radius:8px}
+.intro,.question{padding:clamp(16px,4vw,36px)}
+.intro h1{font-family:'Geomanist','HK Nova',sans-serif;font-size:clamp(2rem,7vw,4.2rem);line-height:1.03;margin:0 0 14px}
+.intro p{font-size:1.1rem}
+.question h1{font-size:clamp(1.23rem,3.1vw,1.85rem);line-height:1.2;margin:8px 0 14px}
+.category{font-weight:700;letter-spacing:.04em;font-size:.88rem}
+progress{width:100%;height:9px;accent-color:#176476;margin:14px 0 7px}
+fieldset{border:0;display:grid;gap:8px;padding:0;margin:0;min-width:0}
+label{display:flex;align-items:center;gap:12px;border:2px solid #b1cbd0;border-radius:8px;padding:10px 13px;min-height:60px;cursor:pointer;line-height:1.23}
+label input{position:absolute;opacity:0;width:1px;height:1px}
+label:has(input:checked){border-color:#135469;background:#def3f3}
+label:has(input:focus-visible),button:focus-visible{outline:3px solid #a54b00;outline-offset:2px}
+.letter{display:grid;place-items:center;min-width:32px;height:32px;border-radius:5px;background:#e6f0f2;font-weight:700}
+label:has(input:checked) .letter{background:#135469;color:white}
+nav{display:flex;justify-content:space-between;gap:8px;margin-top:14px}
+button{border:0;border-radius:7px;background:#135469;color:white;font:inherit;font-weight:700;padding:12px 20px;min-height:48px;cursor:pointer}
+button.secondary{background:#e6f0f2;color:#153f51}
+button:disabled{background:#e2eaeb;color:#52666b;cursor:default}
+@media(max-width:440px){label{font-size:.9rem;padding:8px;gap:8px}header span{font-size:.85rem}}
