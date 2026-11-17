@@ -25,16 +25,11 @@
 #controls{background:#183d50}
 @media(prefers-reduced-motion:reduce){.slide,#controls{transition:none}}
 
-.header-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-}
-.header-right .conference-brand {
-  --conference-logo-height: 42px;
-  padding: 9px 15px;
+.brandline .conference-brand {
+  padding-left: 20px;
+  border-left: 1px solid #b1cbd0;
   font-size: 24px;
 }
+.brandline .conference-brand img { width: auto; height: 42px; }
 .stats-panel h1 { margin-bottom: 6px; }
 .stats-panel .intro { margin-bottom: 24px; }
