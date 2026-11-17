@@ -18,9 +18,8 @@ function welcome() {
   step = -1;
   show(`<img class="landscape" src="assets/homepage.png" alt="">
     <section class="intro"><h1 tabindex="-1">RECRUITMENT: WHAT WOULD YOU DO?</h1>
-    <h2>Four decisions. Have your say.</h2>
+    <h2>Four questions. Have your say.</h2>
     <p>How should Scotland's councils recruit, retain and develop the workforce of the future?</p>
-    <p>About one minute · Anonymous responses</p>
     <button id="start">Start Survey</button></section>`);
   document.querySelector('#start').onclick = () => { step = 0; question(); };
 }

@@ -9,22 +9,23 @@ const surveyUrl = preview ? '../' : 'https://myjob.cosla.gov.uk/coslaconf/';
 const qr = preview ? '' : '<img src="../assets/survey-qr.png" alt="QR code for the survey">';
 
 function header(tag) {
-  return `<header class="header"><div class="brandline"><img src="../assets/logo.svg" alt="myjobscotland"><span>COSLA Conference</span></div>
-    <div class="tag">${tag}</div></header>`;
+  return `<header class="header"><div class="brandline"><img src="../assets/logo.svg" alt="myjobscotland"></div>
+    <div class="header-right"><div class="conference-brand"><img src="../assets/cosla-logo.png" alt="COSLA"><span>Conference 2026</span></div>
+    <div class="tag">${tag}</div></div></header>`;
 }
 function welcome() {
-  const participate = preview ? '<a href="../">Open preview survey on this device</a>' : `<a href="${surveyUrl}">${qr}<div class="scan">SCAN TO TAKE PART</div></a>`;
+  const participate = qr ? `<div class="qr-panel"><a href="${surveyUrl}">${qr}<div class="scan">SCAN TO TAKE PART</div></a></div>` : '';
   return `${header('HAVE YOUR SAY')}<div class="promo-panel">
-    <h1>RECRUITMENT:<br>WHAT WOULD YOU DO?</h1><div class="lead">Four decisions. Have your say.</div>
-    <p class="sub">myjobscotland is a COSLA service supporting recruitment across Scotland's local government.</p>
-    <div class="lead">Take part on a stand tablet${preview ? '' : ' or scan the QR code'}. Anonymous · About one minute</div></div>
-    <div class="qr-panel">${participate}</div>`;
+    <h1>RECRUITMENT:<br>WHAT WOULD YOU DO?</h1><div class="lead">Four questions. Have your say.</div>
+    <p class="sub">myjobscotland is part of COSLA, supporting recruitment across Scotland's local government since 2008.</p></div>
+    ${participate}`;
 }
 function value() {
   const figures = statistics.figures.map(({value, label}, i) => i === 3
     ? `<div class="stat-slim"><strong>${value}</strong><span>${label}</span></div>`
     : `<div class="stat ${i === 0 ? 'strong' : ''}"><div class="num">${value}</div><div class="desc">${label}</div></div>`);
   return `${header('A COSLA SERVICE')}<div class="stats-panel"><h1>${statistics.headline}</h1>
+    <p class="intro">${statistics.supportingStatement}</p>
     <div class="stats-grid">${figures.join('')}</div><div class="stats-foot">${statistics.note}</div></div>`;
 }
 function summary(q, i) {

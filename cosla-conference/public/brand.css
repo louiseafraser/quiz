@@ -14,3 +14,20 @@
   --results-background: #F2FBFC;
   --brand-font: 'HK Nova', Geomanist, Arial, sans-serif;
 }
+
+.conference-brand {
+  display: flex;
+  align-items: center;
+  gap: .65em;
+  flex: none;
+  background: #fff;
+  font-family: 'HK Nova', Geomanist, Arial, sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.conference-brand img {
+  display: block;
+  width: auto;
+  height: var(--conference-logo-height, 30px);
+  object-fit: contain;
+}

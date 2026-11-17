@@ -24,3 +24,10 @@ button{border:0;border-radius:7px;background:#135469;color:white;font:inherit;fo
 button.secondary{background:#e6f0f2;color:#153f51}
 button:disabled{background:#e2eaeb;color:#52666b;cursor:default}
 @media(max-width:440px){label{font-size:.9rem;padding:8px;gap:8px}header span{font-size:.85rem}}
+
+header > img { min-width: 0; }
+header .conference-brand { padding: 4px 0; }
+header .conference-brand img { width: auto; height: var(--conference-logo-height, 30px); }
+@media (max-width: 440px) {
+  header .conference-brand { --conference-logo-height: 24px; }
+}
